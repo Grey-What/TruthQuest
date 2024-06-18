@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Create a New Quiz</h1>
+<form method="POST" action="{{ url_for('main.create_quiz') }}">
+    {{ form.hidden_tag() }}
+    <p>{{ form.tittle.label }}<br>{{ form.title(size=64) }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}
