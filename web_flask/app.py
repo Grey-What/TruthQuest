@@ -9,24 +9,20 @@ app = Flask(__name__)
 
 quiz_data = [
     {
-        'id' = str(uuid4()),
-        'Question' = "Is there one true GOD?",
-        'answer' = True
-    },
-    {
-        'id' = str(uuid4()),
-        Question' = "Eve was the first human created?",
-        'answer' = False
+        'id': str(uuid4()),
+        'question': "Is there one true GOD?",
+        'answer': True
     }
 ]
 
-daily_truth = [
+daily_truth = [ 
     {
-        'id' = str(uuid4()),
-        'date' = str(datetime.now()),
-        'book' = 'John'
-        'chapter' = 16,
-        'verse' = 33
+        'id': str(uuid4()),
+        'date': str(datetime.now()),
+        'book': 'John',
+        'chapter': '16',
+        'verse': '33',
+        'text': "In the world you will have tribulation. But take heart; I have overcome the world."
     }
 ]
 
@@ -36,7 +32,8 @@ def landing_page():
 
 @app.route('/main')
 def main_page():
-    return render_template('main.py', quiz_data=quiz_data, daily_truth=daily_truth)
+    return render_template('main.html', quiz_data=quiz_data, daily_truth=daily_truth)
+
 @app.route("/about")
 def about():
     return render_template("about.html")

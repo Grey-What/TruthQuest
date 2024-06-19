@@ -5,22 +5,16 @@
     {% block head %}
     <title>{% block title %}{% endblock title %} - TruthQuest</title>
     {% endblock head %}
-    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<header><h1>Truth Quest</h1></header>
 </head>
 <body>
-    <h1>{% block main_header %}{% endblock main_header %}</h1>
     <div id ="quiz">
-        {% block quiz %}
-            {% for quiz in quizzes %}
-                
-            {% endfor %}
-        {% endblock quiz%}
-
-        <button>True</button>
-        <button>False</button>
+        <h1>Question</h1>
+        {% block quiz %}{% endblock quiz %}
     </div>
     <div id="verse">
-        {% block verse %}{% endblock verse%}
+        {% block verse %}{% endblock verse %}
     </div>
     <footer>TruthQuest</footer>
 </body>
