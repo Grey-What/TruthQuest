@@ -2,28 +2,18 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bible Quiz App</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    {% block head %}
+    <title>{% block title %}{% endblock title %} - TruthQuest</title>
+    {% endblock head %}
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="{{ url_for('main.index') }}">Home</a></li>
-            {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('main.create_quiz') }}">Create Quiz</a></li>
-                <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
-            {% else %}
-                <li><a href="{{ url_for('main.login') }}">Login</a></li>
-                <li><a href="{{ url_for('main.register') }}">Register</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-    <div class="content">
-        {% for message in get_flashed_messages() %}
-            <div class="flash">{{ message }}</div>
-        {% endfor %}
-        {% block content %}{% endblock %}
+    <h1>Truth Quest</h1>
+    <div id ="quiz">
+        {% block quiz %}{% endblock quiz%}
     </div>
+    <div id="verse">
+        {% block verse %}{% endblock verse%}
+    </div>
+    <footer>TruthQuest</footer>
 </body>
 </html>
