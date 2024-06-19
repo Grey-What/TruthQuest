@@ -2,33 +2,25 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
+    box-sizing: border-box;
 }
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
+.quiz, .verse {
+    flex-basis: 48%;
+    padding: 20px;
+    border-radius: 5px;
 }
-
-nav ul li {
-    display: inline;
-    margin-right: 10px;
+.quiz {
+    background-color: #C80002;
 }
-
-nav ul li a {
-    text-decoration: none;
-    color: #333;
+.verse {
+    background-color: #FFCA48;
 }
-
-.content {
-    margin: 20px;
+.header {
+    background-color: #C80002;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius; 5px;
 }
-
-.flash {
-    color: red;
-}
-
-form {
-    max-width: 300px;
-}
-

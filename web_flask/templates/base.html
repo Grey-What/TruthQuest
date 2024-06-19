@@ -5,11 +5,14 @@
     {% block head %}
     <title>{% block title %}{% endblock title %} - TruthQuest</title>
     {% endblock head %}
+    <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
     <h1>Truth Quest</h1>
     <div id ="quiz">
         {% block quiz %}{% endblock quiz%}
+        <button>True</button>
+        <button>False</button>
     </div>
     <div id="verse">
         {% block verse %}{% endblock verse%}
