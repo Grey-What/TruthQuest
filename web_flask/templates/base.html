@@ -7,9 +7,13 @@
     {% endblock head %}
 </head>
 <body>
-    <h1>Truth Quest</h1>
+    <h1>{% block main_header %}{% endblock main_header %}</h1>
     <div id ="quiz">
-        {% block quiz %}{% endblock quiz%}
+        {% block quiz %}
+            {% for quiz in quizzes %}
+                
+            {% endfor %}
+        {% endblock quiz%}
     </div>
     <div id="verse">
         {% block verse %}{% endblock verse%}
