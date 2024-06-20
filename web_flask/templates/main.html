@@ -1,21 +1,22 @@
 {% extends "base.html" %}
 
 {% block title  %}Quiz{% endblock  %}
-{% block heading %}Question{% endblock heading %}
 
-{% block quiz %}
-    {% for quiz in quiz_data  %}
-        <p>{{ quiz.question }}</p>
-    {% endfor %}
+{% block content %}
+    <div id ="quiz">
+        <h1>Question</h1>
+        {% for quiz in quiz_data  %}
+            <p>{{ quiz.question }}</p>
+        {% endfor %}
         <button>False</button>
         <button>True</button>
-{% endblock quiz %}
-
-{% block verse %}
-    {% for truth in daily_truth  %}
+    </div>
+    <div id="verse">
+        {% for truth in daily_truth  %}
         <h1>{{ truth.book }}</h1>
         <h4>{{ truth.date }}</h4>
         <h6>{{ truth.book }}</h6>
         <p>{{ truth.text}}</p>
     {% endfor %}
-{% endblock verse %}
+    </div>
+{% endblock content %}

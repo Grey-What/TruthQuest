@@ -6,16 +6,10 @@
     <title>{% block title %}{% endblock title %} - TruthQuest</title>
     {% endblock head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-<header><h1>Truth Quest</h1></header>
 </head>
 <body>
-    <div id ="quiz">
-        <h1>Question</h1>
-        {% block quiz %}{% endblock quiz %}
-    </div>
-    <div id="verse">
-        {% block verse %}{% endblock verse %}
-    </div>
+    <header><h1>Truth Quest</h1></header>
+    {% block content %}{% endblock content %}
     <footer>TruthQuest</footer>
 </body>
 </html>
