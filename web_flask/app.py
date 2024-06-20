@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 """ Start TruthQuest web application"""
 from flask import Flask, render_template
+from web_flask.forms import RegistrationFrom, LoginForm
 from uuid import uuid4
 from datetime import datetime
 
-
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = '7ea0b663144af24c7d5dff519b97ce54'
 
 quiz_data = [
     {
@@ -28,7 +30,7 @@ daily_truth = [
 
 @app.route("/")
 def landing_page():
-    return render_template("index.html")
+    return render_template("landing_page.html")
 
 @app.route('/main')
 def main_page():
@@ -37,6 +39,16 @@ def main_page():
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+@app.route('/register')
+def register():
+   form = RegistrationFrom()
+   return render_template('register.html', tile='Register', form=form)
+
+@app.route('/login')
+def login():
+   form = LoginForm()
+   return render_template('login.html', tile='Login', form=form)
 
 
 if __name__ == "__main__":
