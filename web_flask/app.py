@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Start TruthQuest web application"""
-from flask import Flask, render_template
+from flask import Flask, render_template, flash, redirect, url_for
 from web_flask.forms import RegistrationFrom, LoginForm
 from uuid import uuid4
 from datetime import datetime
@@ -33,21 +33,30 @@ def landing_page():
     return render_template("landing_page.html")
 
 @app.route('/main')
-def main_page():
+def main():
     return render_template('main.html', quiz_data=quiz_data, daily_truth=daily_truth)
 
 @app.route("/about")
 def about():
     return render_template("about.html")
 
-@app.route('/register')
+@app.route('/register', methods=('GET', 'POST'))
 def register():
    form = RegistrationFrom()
+   if form.validate_on_submit():
+       flash('Welcome {}'.format(form.username.data), 'success')
+       return redirect(url_for('main'))
    return render_template('register.html', tile='Register', form=form)
 
-@app.route('/login')
+@app.route('/login', methods=('GET', 'POST'))
 def login():
    form = LoginForm()
+   if form.validate_on_submit():
+       if form.email.data == 'greywhat2002@gmail.com' and form.password.data == '2002':
+           flash('You have been logged in!', 'success')
+           return redirect(url_for('main'))
+       else:
+           flash("Login unsuccessful. Please check username and password", 'danger')
    return render_template('login.html', tile='Login', form=form)
 
 
