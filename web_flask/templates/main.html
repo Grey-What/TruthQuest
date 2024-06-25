@@ -1,22 +1,26 @@
-{% extends "base.html" %}
+    {% extends "base.html" %}
 
-{% block title  %}Quiz{% endblock  %}
+    {% block title  %}Quiz{% endblock  %}
 
-{% block content %}
-    <div id ="quiz">
-        <h1>Question</h1>
-        {% for quiz in quiz_data  %}
-            <p>{{ quiz.question }}</p>
+    {% block content %}
+     <div class="container">
+        <div id ="quiz">
+            <h1>Question</h1>
+            {% for quiz in quiz_data  %}
+                <p>{{ quiz.question }}</p>
+            {% endfor %}
+        <div class="button-container">
+            <button>True</button>
+            <button>False</button>
+        </div>
+        </div>
+        <div id="verse">
+            {% for truth in daily_truth  %}
+            <h1>{{ truth.book }}</h1>
+            <h4>{{ truth.date }}</h4>
+            <h6>{{ truth.book }}</h6>
+            <p>{{ truth.text}}</p>
         {% endfor %}
-        <button>False</button>
-        <button>True</button>
+        </div>
     </div>
-    <div id="verse">
-        {% for truth in daily_truth  %}
-        <h1>{{ truth.book }}</h1>
-        <h4>{{ truth.date }}</h4>
-        <h6>{{ truth.book }}</h6>
-        <p>{{ truth.text}}</p>
-    {% endfor %}
-    </div>
-{% endblock content %}
+    {% endblock content %}
