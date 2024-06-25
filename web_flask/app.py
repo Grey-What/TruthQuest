@@ -16,7 +16,6 @@ quiz_data = [
         'answer': True
     }
 ]
-
 daily_truth = [ 
     {
         'id': str(uuid4()),
