@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Start TruthQuest web application"""
 from flask import Flask, render_template, flash, redirect, url_for
-from web_flask.forms import RegistrationFrom, LoginForm
+from forms import RegistrationFrom, LoginForm
 from flask_sqlalchemy import SQLAlchemy
 from uuid import uuid4
 from datetime import datetime
@@ -9,7 +9,8 @@ from datetime import datetime
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '7ea0b663144af24c7d5dff519b97ce54'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://TQ_Admin:TruthQuest24@localhost/TruthQuest_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+"""app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://TQ_Admin:TruthQuest24@localhost/TruthQuest_db?auth_plugin=mysql_native_password'"""
 
 db = SQLAlchemy(app)
 
@@ -26,7 +27,7 @@ class User(db.Model):
         """print string representation of a user"""
         return "User('{}', '{}', '{}')".format(self.id, self.username, self.email)
 
- """to be moved"""   
+"""to be moved"""   
 class Quiz(db.Model):
     __tablename__ = 'quiz'
 
