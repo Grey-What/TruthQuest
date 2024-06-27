@@ -59,12 +59,16 @@ header .logo {
 }
 header h1 {
     text-align: center;
+    margin-left: 40%;
 }
 
 footer {
     background-color: #29406D;
     color: white;
     border: none;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     padding: 10px 20px;
     margin: 25px 0 0 0;
     cursor: pointer;
@@ -175,15 +179,16 @@ button:hover {
 }
 
 header  .topnav {
-    background-color: #333;
+    background-color: #209EFF;
     overflow: hidden;
     display: flex;
     justify-content: flex-end;
     margin-left: auto;
+    border-radius: 5px;
 }
 
 header .topnav a {
-    color: #f2f2f2;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
