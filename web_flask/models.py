@@ -35,11 +35,11 @@ class Verse(db.Model, UserMixin):
     __tablename__ = 'verses'
 
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime, default = datetime.utcnow, nullable=False)
+    date = db.Column(db.String(64), nullable=False)
     book = db.Column(db.String(64), nullable=False)
     chapter = db.Column(db.Integer, nullable=False)
     verse = db.Column(db.Integer, nullable=False)
-    text = db.Column(db.String(256), nullable=False)
+    text = db.Column(db.Text, nullable=False)
 
     def __repr__(self):
         """print string representation of a verse"""
