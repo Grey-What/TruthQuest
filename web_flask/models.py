@@ -1,7 +1,14 @@
-from web_flask import db
+from web_flask import db, login_manager
 from datetime import datetime
+from flask_login import UserMixin
 
-class User(db.Model):
+@login_manager.user_loader
+def load_user(user_id):
+    """return a user that match id"""
+    return User.query.get(int(user_id))
+
+
+class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -12,9 +19,8 @@ class User(db.Model):
     def __repr__(self):
         """print string representation of a user"""
         return "User('{}', '{}', '{}')".format(self.id, self.username, self.email)
-
-"""to be moved"""   
-class Quiz(db.Model):
+ 
+class Quiz(db.Model, UserMixin):
     __tablename__ = 'quiz'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -25,16 +31,15 @@ class Quiz(db.Model):
         """print string representation of a quiz"""
         return "Quiz('{}', '{}', '{}')".format(self.id, self.question, self.answer)
 
-"""to be moved"""
-class Verse(db.Model):
+class Verse(db.Model, UserMixin):
     __tablename__ = 'verses'
 
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime, default = datetime.utcnow, nullable=False)
+    date = db.Column(db.String(64), nullable=False)
     book = db.Column(db.String(64), nullable=False)
     chapter = db.Column(db.Integer, nullable=False)
     verse = db.Column(db.Integer, nullable=False)
-    text = db.Column(db.String(256), nullable=False)
+    text = db.Column(db.Text, nullable=False)
 
     def __repr__(self):
         """print string representation of a verse"""
