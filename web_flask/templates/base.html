@@ -6,9 +6,19 @@
     <title>{% block title %}{% endblock title %} - TruthQuest</title>
     {% endblock head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
 </head>
-<body>
-    <header><h1>Truth Quest</h1></header>
+    <body>
+        <header>
+        <h1>Truth Quest</h1>
+            <img src="{{ url_for('static', filename='css/Image/logo4.jpeg') }}" alt="logo" class="logo">
+            <div class="topnav">
+                <a class="active" href="#home">Home</a>
+                <a href="#news">News</a>
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a>
+            </div>
+        </header>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
