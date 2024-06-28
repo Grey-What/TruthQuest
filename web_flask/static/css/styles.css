@@ -1,4 +1,5 @@
 body {
+    background-color: rgb(144, 207, 228);
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -8,7 +9,7 @@ body {
    display: flex;
    justify-content: space-between;
    padding-left: 420px;
-   background-color: lightblue;
+  
    align-items: flex-start;
 }
 *, *:before, *:after {
@@ -17,7 +18,7 @@ body {
     flex-basis: 50%;
     padding: 20px;
     border-radius: 5px;
-    background-color: #f11e21;
+    background-color:#FFC64C;
     margin-right: 20px;
     margin-left: auto;
     text-align: center;
@@ -30,23 +31,67 @@ body {
     flex-basis: 30%;
     padding: 20px;
     border-radius: 5px;
-    background-color: #FFCA48;
+    background-color: #209EFF;
     margin-left: 20px;
     margin-right: auto;
     padding-bottom: 50px;
 }
 header {
-    background-color: #C80002;
+    background-color: #29406D;
     color: white;
     border: none;
     padding: 10px 20px;
-    margin: 10px 0;
+    margin: 0 0 25px 0;
     cursor: pointer;
     border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 60px;
+    position: relative;
+}
+
+header .logo {
+    height: 60px; 
+    position: absolute;
+    left: 1px; 
+}
+header h1 {
+    text-align: center;
+    margin-left: 40%;
+}
+
+footer {
+    background-color: #29406D;
+    color: white;
+    border: none;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 20px;
+    margin: 25px 0 0 0;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 40px;
 }
 header:hover {
-    background-color: #FFCA48;
+    color: goldenrod; 
 }
+}
+footer:hover {
+    color: goldenrod; 
+}
+
+header .logo {
+    height: 60px; 
+    margin-right: 0px;
+}
+
 button {
     font-family: Arial, sans-serif;
     font-size: 16px;
@@ -58,7 +103,7 @@ button {
     margin: 10px;
 }
 button:hover {
-    background-color: #FFCA48;
+    background-color: rgba(90, 236, 64, 0.941)
 }
 .button-container {
     position: absolute;
@@ -99,40 +144,91 @@ button:hover {
 }
 
 .btn-outline-info {
-    background-color: red;
+    background-color: blue;
     color: white;
-    border-color: gold;
+    border-color: lightblue;
 }
 
 .btn-outline-info:hover {
-    background-color: gold;
-    color: red;
-    border-color: red;
+    background-color: black;
+    color:white;
+    border-color: lightblue;
 }
 
 .border-bottom {
-    border-bottom: 2px solid red !important;
+    border-bottom: 2px solid gold !important;
 }
 
 .invalid-feedback {
-    color: red;
+    color: #209EFF;
 }
 
 .form-check-input:checked {
-    background-color: red;
-    border-color: red;
+    background-color:#29406D;
+    border-color: #29406D;
 }
 
 .text-muted a {
-    color: gold;
+    color: #29406D;
     text-decoration: none;
 }
 
 .text-muted a:hover {
-    color: red;
+    color: #209EFF;
     text-decoration: underline;
 }
 
 .border-top {
     border-top: 2px solid red;
+}
+
+header  .topnav {
+    background-color: #209EFF;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    border-radius: 5px;
+    padding: auto;
+    
+}
+
+header .topnav a {
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+header .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+header .topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+#about{
+    flex-basis: 50%;
+    padding: 20px;
+    border-radius: 5px;
+    background-color:#FFC64C;
+    margin-right: 20px;
+    margin-left: 20px;
+    text-align: center;
+    padding-right: 5%;
+    padding-bottom: 30px;
+}
+#devop {
+    flex-basis: 30%;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #FFC64C;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+    padding-bottom: 70px;
+    margin-top: auto;
 }
