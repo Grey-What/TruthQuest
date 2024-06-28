@@ -77,9 +77,13 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center; 
-    height: 60px;
+    height: 40px;
 }
 header:hover {
+    color: goldenrod; 
+}
+}
+footer:hover {
     color: goldenrod; 
 }
 
@@ -140,37 +144,37 @@ button:hover {
 }
 
 .btn-outline-info {
-    background-color: red;
+    background-color: blue;
     color: white;
-    border-color: gold;
+    border-color: lightblue;
 }
 
 .btn-outline-info:hover {
-    background-color: gold;
-    color: red;
-    border-color: red;
+    background-color: black;
+    color:white;
+    border-color: lightblue;
 }
 
 .border-bottom {
-    border-bottom: 2px solid red !important;
+    border-bottom: 2px solid gold !important;
 }
 
 .invalid-feedback {
-    color: red;
+    color: #209EFF;
 }
 
 .form-check-input:checked {
-    background-color: red;
-    border-color: red;
+    background-color:#29406D;
+    border-color: #29406D;
 }
 
 .text-muted a {
-    color: gold;
+    color: #29406D;
     text-decoration: none;
 }
 
 .text-muted a:hover {
-    color: red;
+    color: #209EFF;
     text-decoration: underline;
 }
 
@@ -185,6 +189,8 @@ header  .topnav {
     justify-content: flex-end;
     margin-left: auto;
     border-radius: 5px;
+    padding: auto;
+    
 }
 
 header .topnav a {
@@ -203,4 +209,26 @@ header .topnav a:hover {
 header .topnav a.active {
     background-color: #04AA6D;
     color: white;
+}
+#about{
+    flex-basis: 50%;
+    padding: 20px;
+    border-radius: 5px;
+    background-color:#FFC64C;
+    margin-right: 20px;
+    margin-left: 20px;
+    text-align: center;
+    padding-right: 5%;
+    padding-bottom: 30px;
+}
+#devop {
+    flex-basis: 30%;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #FFC64C;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+    padding-bottom: 70px;
+    margin-top: auto;
 }
