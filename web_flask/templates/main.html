@@ -1,5 +1,20 @@
     {% extends "base.html" %}
 
+    {% block user_info %}
+        <div class="user-info">
+            <h3>User Stats</h3>
+            {% if current_user.is_authenticated %}
+                <p>Hello, {{ current_user.username }}!</p>
+                <p>Streak: {{ user_stats.streak }} days played</p>
+                <p>Quizzes Completed: {{ user_stats.quizzes_completed }}</p>
+                <p>Quizzes Correct: {{ user_stats.correct_answers }}</p>
+            {% else %}
+                <p>You are not logged in!</p>
+                <p><a href="{{ url_for('login') }}">Log In</a></p>
+            {% endif %}
+        </div>
+    {% endblock user_info %}
+
     {% block content %}
         <div class="container">
             <div id="quiz">
