@@ -26,10 +26,11 @@ class Quiz(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.String(256), nullable=False)
     answer = db.Column(db.Boolean, nullable=False)
+    date_added = db.Column(db.Date, nullable=False, default=db.func.current_date())
 
     def __repr__(self):
         """print string representation of a quiz"""
-        return "Quiz('{}', '{}', '{}')".format(self.id, self.question, self.answer)
+        return "Quiz('{}', '{}', '{}', '{}')".format(self.id, self.date_added, self.question, self.answer)
 
 class Verse(db.Model, UserMixin):
     __tablename__ = 'verses'

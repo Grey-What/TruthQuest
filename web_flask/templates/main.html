@@ -1,24 +1,47 @@
     {% extends "base.html" %}
 
-    {% block title  %}Quiz{% endblock  %}
-
     {% block content %}
-     <div class="container">
-        <div id ="quiz">
-            <h1>Question</h1>
-            {% for quiz in quiz_data  %}
-                <p>{{ quiz.question }}</p>
-            {% endfor %}
-        <div class="button-container">
-            <button>True</button>
-            <button>False</button>
+        <div class="container">
+            <div id="quiz">
+                <h1>Daily Quizzes</h1>
+                {% block quiz %}
+                    {% if quiz_complete %}
+                            <p>You have completed all quizzes for today!
+                                Come Back Tommorrow for More Quizzes!
+                            </p> 
+                    {% else %}
+                            <h2>Quiz {{ index }} of 5:</h2>
+                            {% if quiz_answered %}
+                                <p>Your answer was: <strong>{{ quiz_answer }}</strong></p>
+                                {% if (quiz_answer == 'True' and quiz.answer) or (quiz_answer == 'False' and not quiz.answer) %}
+                                    <p><strong>Correct!</strong></p>
+                                {% else %}
+                                    <p><strong>Incorrect.</strong> The correct answer is: {{ 'True' if quiz.answer else 'False' }}</p>
+                                {% endif %}
+                                <form action="{{ url_for('next_quiz') }}" method="POST">
+                                    <input type="submit" name="next_quiz" value="Next Quiz">
+                                </form>
+                            {% else %}
+                            <form action="{{ url_for('next_quiz') }}" method="POST">
+                                <p>{{ quiz.question }}</p>
+                                
+                                <input type="radio" id="true" name="answer" value="True">
+                                <label for="true">True</label><br>
+                                
+                                <input type="radio" id="false" name="answer" value="False">
+                                <label for="false">False</label><br>
+                                
+                                <input type="submit" value="Submit">
+                            </form>
+                            {% endif %}  
+                    {% endif %}
+                {% endblock quiz %}
+            </div>   
+            <div id="verse">
+                <h1>{{ daily_verse.bookname }}</h1>
+                <h4>{{ daily_verse.date }}</h4>
+                <h4>{{ daily_verse.chapter }}:{{ daily_verse.verse }}</h4>
+                <p>{{ daily_verse.text }}</p>
+            </div>
         </div>
-        </div>
-        <div id="verse">
-            <h1>{{ daily_verse.bookname }}</h1>
-            <h4>{{ daily_verse.date }}</h4>
-            <h4>{{ daily_verse.chapter }}:{{ daily_verse.verse }}</h4>
-            <p>{{ daily_verse.text }}</p>
-        </div>
-    </div>
     {% endblock content %}
