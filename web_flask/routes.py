@@ -1,35 +1,88 @@
 from uuid import uuid4
 from datetime import datetime
 from web_flask.forms import RegistrationFrom, LoginForm
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, session, request
 from web_flask import app, db, bcrypt
-from web_flask.models import User
+from web_flask.models import User, Quiz
 from flask_login import login_user, current_user, logout_user
-from web_flask.daily_verse import get_daily_verse
+from web_flask.daily_objects import get_daily_verse, get_daily_quizzes
 from apscheduler.schedulers.background import BackgroundScheduler
 import atexit
+from sqlalchemy.sql import func
 
 daily_verse = ""
+daily_quizzes = []
 #for scheduled job
 def fetch_and_store_daily_verse():
     global daily_verse
     daily_verse = get_daily_verse()
 
-quiz_data = [
-    {
-        'id': str(uuid4()), 
-        'question': "Is there one true GOD?",
-        'answer': True
-    }
-]
+def fetch_and_store_daily_quizzes():
+    global daily_quizzes
+    daily_quizzes = get_daily_quizzes()
 
 @app.route("/")
 def landing_page():
     return render_template("landing_page.html")
 
-@app.route('/main')
+@app.route('/main', methods=['GET', 'POST'])
 def main():
-    return render_template('main.html', quiz_data=quiz_data, daily_verse=daily_verse)
+    global daily_quizzes
+    current_date = datetime.utcnow().date()
+
+    last_quiz_date = session.get('last_quiz_date')
+    if last_quiz_date is None or datetime.strptime(last_quiz_date, '%Y-%m-%d').date() != current_date:
+        session['quiz_index'] = 0
+        session['quiz_answered'] = False
+        session['quiz_answer'] = None
+        session['last_quiz_date'] = current_date.strftime('%Y-%m-%d')
+        session['daily_quizzes'] = [quiz.id for quiz in daily_quizzes]
+
+    if 'daily_quizzes' not in session:
+        session['daily_quizzes'] = [quiz.id for quiz in daily_quizzes]
+
+    quiz_index = session.get('quiz_index', 0)
+    quizzes = Quiz.query.filter(Quiz.id.in_(session['daily_quizzes'])).all()
+    
+    quiz_complete = quiz_index >= len(quizzes)
+
+    if quiz_complete:
+      current_quiz = None
+    else:
+      current_quiz = quizzes[quiz_index]
+    
+    return render_template('main.html', quiz=current_quiz,
+                           index=quiz_index + 1, daily_verse=daily_verse,
+                           quiz_answered=session['quiz_answered'],
+                           quiz_answer=session['quiz_answer'],
+                           quiz_complete=quiz_complete)
+
+@app.route('/next_quiz', methods=['POST'])
+def next_quiz():
+    user_answer = request.form.get('answer')
+
+    if user_answer:
+        # Store user's answer and check correctness
+        session['quiz_answer'] = user_answer
+        session['quiz_answered'] = True
+
+    quiz_index = session.get('quiz_index', 0)
+    daily_quizzes = session.get('daily_quizzes', [])
+    quizzes = Quiz.query.filter(Quiz.id.in_(daily_quizzes)).all()
+
+    if quiz_index < len(quizzes):
+        quiz = quizzes[quiz_index]
+
+        # Move to the next quiz index if user submits 'Next Quiz'
+        if 'next_quiz' in request.form:
+            session['quiz_index'] += 1
+            session['quiz_answered'] = False
+            session['quiz_answer'] = None
+
+    if session['quiz_index'] >= len(quizzes):
+        return redirect(url_for('main'))
+    
+    return redirect(url_for('main'))
 
 @app.route("/about")
 def about():
@@ -69,9 +122,11 @@ def logout():
     return redirect(url_for('landing_page'))
 
 scheduler = BackgroundScheduler()
+scheduler.add_job(func=fetch_and_store_daily_quizzes, trigger="interval", hours=24)
 scheduler.add_job(func=fetch_and_store_daily_verse, trigger="interval", hours=24)
 scheduler.start()
 
 atexit.register(lambda: scheduler.shutdown())
 
 fetch_and_store_daily_verse()
+fetch_and_store_daily_quizzes()

@@ -1,7 +1,16 @@
 import requests
 from web_flask import db, app
-from web_flask.models import Verse
+from web_flask.models import Verse, Quiz
 from datetime import datetime
+from sqlalchemy.sql import func
+
+def get_daily_quizzes():
+    """get a daily quiz database"""
+    with app.app_context():
+        today = datetime.utcnow().date()
+        quizzes = Quiz.query.filter(func.date(Quiz.date_added)==today).order_by(func.random()).limit(5).all()
+        print(quizzes)
+    return quizzes
 
 def get_daily_verse():
     """get a daily verse from bible api and save to db"""
@@ -26,7 +35,7 @@ def get_daily_verse():
     return daily_verse
 
 """
-verse structure
+verse structure from api
 
 [{
     "bookname": "Genesis",
@@ -35,7 +44,7 @@ verse structure
     "text": "In the beginning was the Word, and the Word was with God, and the Word was God."
 }]
 
-desired structure
+desired structure to model
 {
     "bookname": "Genesis",
     "chapter": 1,
