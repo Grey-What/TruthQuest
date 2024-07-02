@@ -23,7 +23,7 @@ body {
     margin-left: auto;
     text-align: center;
     padding-right: 5%;
-    padding-bottom: 350px;
+    padding-bottom: 230px;
     position: relative;
     
 }
@@ -101,9 +101,13 @@ button {
     cursor: pointer;
     transition: all 0.3s ease;
     margin: 10px;
+    background-color: #007bff;
+    color: white;
+
+
 }
-button:hover {
-    background-color: rgba(90, 236, 64, 0.941)
+ button:hover {
+    background-color: #0056b3;
 }
 .button-container {
     position: absolute;
@@ -231,4 +235,32 @@ header .topnav a.active {
     text-align: center;
     padding-bottom: 70px;
     margin-top: auto;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+button[name="answer"][value="True"] {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+button[name="answer"][value="False"] {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
