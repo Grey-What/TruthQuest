@@ -9,6 +9,7 @@ def load_user(user_id):
 
 
 class User(db.Model, UserMixin):
+    """represents Users of TruthQuest"""
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -21,6 +22,7 @@ class User(db.Model, UserMixin):
         return "User('{}', '{}', '{}')".format(self.id, self.username, self.email)
  
 class Quiz(db.Model, UserMixin):
+    """represents Quizzes of TruthQuest"""
     __tablename__ = 'quiz'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -33,6 +35,7 @@ class Quiz(db.Model, UserMixin):
         return "Quiz('{}', '{}', '{}', '{}')".format(self.id, self.date_added, self.question, self.answer)
 
 class Verse(db.Model, UserMixin):
+    """represents daily verse of TruthQuest"""
     __tablename__ = 'verses'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -45,3 +48,21 @@ class Verse(db.Model, UserMixin):
     def __repr__(self):
         """print string representation of a verse"""
         return "Verse('{}', '{}', '{}', '{}', '{}', '{}')".format(self.id, self.date, self.book, self.chapter, self.verse, self.text)
+    
+class UserStats(db.Model):
+    """represents user stats of TruthQuest including unregistered users"""
+    __tablename__ = 'user_stats'
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    streak = db.Column(db.Integer, default=0, nullable=False)
+    quizzes_completed = db.Column(db.Integer, default=0)
+    correct_answers = db.Column(db.Integer, default=0)
+    last_played = db.Column(db.Date, nullable=False, default=datetime.utcnow().date())
+
+    def __init__(self, user_id=None):
+        """loads user stats"""
+        self.user_id = user_id
+    def __repr__(self):
+        """print string representation of a user stats"""
+        print("{}, {}, {}, {}, {}".format(self.user_id, self.streak, self.quizzes_completed, self.correct_answers, self.last_played))

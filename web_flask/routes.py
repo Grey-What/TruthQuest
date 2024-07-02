@@ -9,9 +9,11 @@ from web_flask.daily_objects import get_daily_verse, get_daily_quizzes
 from apscheduler.schedulers.background import BackgroundScheduler
 import atexit
 from sqlalchemy.sql import func
+from web_flask.user_stats import get_or_create_user_stats, update_user_stats
 
 daily_verse = ""
 daily_quizzes = []
+
 #for scheduled job
 def fetch_and_store_daily_verse():
     global daily_verse
@@ -28,6 +30,7 @@ def landing_page():
 @app.route('/main', methods=['GET', 'POST'])
 def main():
     global daily_quizzes
+    user_stats = get_or_create_user_stats()
     current_date = datetime.utcnow().date()
 
     last_quiz_date = session.get('last_quiz_date')
@@ -37,6 +40,10 @@ def main():
         session['quiz_answer'] = None
         session['last_quiz_date'] = current_date.strftime('%Y-%m-%d')
         session['daily_quizzes'] = [quiz.id for quiz in daily_quizzes]
+
+    #for user stats
+    if current_user.is_authenticated:
+        update_user_stats(user_stats)
 
     if 'daily_quizzes' not in session:
         session['daily_quizzes'] = [quiz.id for quiz in daily_quizzes]
@@ -55,7 +62,8 @@ def main():
                            index=quiz_index + 1, daily_verse=daily_verse,
                            quiz_answered=session['quiz_answered'],
                            quiz_answer=session['quiz_answer'],
-                           quiz_complete=quiz_complete)
+                           quiz_complete=quiz_complete,
+                           user_stats=user_stats)
 
 @app.route('/next_quiz', methods=['POST'])
 def next_quiz():
@@ -73,11 +81,21 @@ def next_quiz():
     if quiz_index < len(quizzes):
         quiz = quizzes[quiz_index]
 
+        if current_user.is_authenticated:
+            user_stats = get_or_create_user_stats()
+            if (user_answer == 'True' and quiz.answer) or (user_answer == 'False' and not quiz.answer):
+                user_stats.correct_answers += 1
+
         # Move to the next quiz index if user submits 'Next Quiz'
         if 'next_quiz' in request.form:
             session['quiz_index'] += 1
             session['quiz_answered'] = False
             session['quiz_answer'] = None
+
+            if current_user.is_authenticated:
+                user_stats.quizzes_completed += 1
+
+        db.session.commit()
 
     if session['quiz_index'] >= len(quizzes):
         return redirect(url_for('main'))
