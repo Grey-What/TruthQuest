@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
-    {% block user_info %}
+{% block content %}
+    <div class="container">
         <div class="user-info">
             <h3>User Stats</h3>
             {% if current_user.is_authenticated %}
@@ -13,10 +14,6 @@
                 <p><a href="{{ url_for('login') }}">Log In</a></p>
             {% endif %}
         </div>
-    {% endblock user_info %}
-
-{% block content %}
-    <div class="container">
         <div id="quiz">
             <h1>Daily Quizzes</h1>
             {% block quiz %}
@@ -39,7 +36,6 @@
                     {% else %}
                         <form action="{{ url_for('next_quiz') }}" method="POST">
                             <p>{{ quiz.question }}</p>
-                            
                             <button type="submit" name="answer" value="True">True</button>
                             <button type="submit" name="answer" value="False">False</button>
                         </form>
@@ -48,8 +44,9 @@
             {% endblock quiz %}
         </div>   
         <div id="verse">
-            <h1>{{ daily_verse.bookname }}: {{ daily_verse.chapter }}:{{ daily_verse.verse }} </h1>
+            <h1>{{ daily_verse.bookname }}: {{ daily_verse.chapter }}:{{ daily_verse.verse }}</h1>
             <p>{{ daily_verse.text }}</p>
         </div>
     </div>
 {% endblock content %}
+
