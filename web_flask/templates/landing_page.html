@@ -1,3 +1,81 @@
-{% extends "base.html" %}
-{% block title  %}Landing Page{% endblock  %}
-{% block heading %}Welcome to TruthQuest!{% endblock heading %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TruthQuest - Landing Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>TruthQuest</h1>
+            <img src="{{ url_for('static', filename='css/Image/logo4.jpeg') }}" alt="logo" class="logo">
+            <nav class="topnav">
+                <a href="#Introduction">Introduction</a>
+                <a href "#about">About</a>
+                <a href="{{ url_for('main') }}">Continue to TruthQuest</a>
+            </nav>
+        </header>
+        <h1>Welcome to TruthQuest</h1>
+        <h3>The Truth, The Way and The Light</h3>
+        <img src="{{ url_for('static', filename='css/Image/cover.jpeg') }}" alt="cover" class="cover">
+
+        <div id="Introduction">
+            <h2>Introduction</h2>
+            <p>TruthQuest was created for those who want to learn more about the God,
+                and so uncover the truth's about Him, themselves and existence.
+
+                The goal TruthQuest hope's to achieve is to strengthen and motivate fellow Christians by inspiring them with spiritual truths to escape the lies our minds and environments create that trap us in bad behaviourial patterns and states of mind like depression, anxiety and fear.
+
+                The Word of God or Bible is described as the sword of the Spirit, that can be used to fight these lies and misconceptions on God, ourselves and existence to achieve the mental or spiritual peace and freedom, faith and God can provide us.
+            </p>
+            <h3>We have designed TruthQuest with the following features to achieve our goals:</h3>
+            <div class="features" id="Quiz">
+                <h4>Quiz</h4>
+                <p>The daily quiz will test your knowledge of the Bible. The quiz will cover truths of God, the Bible, and the stories, lessons and truths of life.
+                    Everyday 5 new true and false quiz questions will be made available to you to enhance your knowledge of the Word of God and streghten your sword to expose the misconceptions you may have and help you on your journey of Faith.
+
+                    Simply decide if the answer to the statement is True or False and click and see if you got it right.
+
+                    [SCREENSHOT OF QUIZ]
+                </p>
+            </div>
+            <div class="features" id="Streak">
+                <h4>Streaks and Stats</h4>
+                <p>
+                    The Stats section will show you your days consecutively played and other stats like the ammount of quizzes done and the ammount of correct answers, to help keep you motivated to play TruthQuest and provide you with insight into your understanding and knowledge.
+                    
+                    [SCREENSHOT OF STATS]
+                </p>
+            </div>
+            <div class="features" id="Daily Verse">
+                <h4>Daily Verse</h4>
+                <p>
+                    Each day a new Bible verse to inspire, strengthen and motivate you will be displayed.
+
+                    [SCREENSHOT OF VERSE OF THE DAY]
+                </p>
+            </div>
+        </div>
+        <div id="About">
+            <h2>About TruthQuest</h2>
+            <p>
+                TruthQuest is a web application that allows you to test your knowledge of the Bible.
+                5 daily interactive true or false question about the Bible and truths about God can be completed and a motivational 'daily Truth' bible verse for people of the Christian faith is displayed to inspire, motivate and empower people through their faiths.
+                The goal is to strengthen and motivate people by inspiring them with spiritual truths to escape the lies our minds and environments create that trap us in bad behaviour patterns and states of mind like depression. 
+                The Word of God or Bible is described as a sword of the Spirit, that can be used to fight these lies and misconceptions on God, ourselves and existence to achieve the mental/spiritual peace and freedom faith and God can provide us.
+    
+                TruthQuest was created by two developers that helped each other develop not only their software engineering skill through motivation and guidance but also their faiths throughout the ALX Software Engineering course.
+                It felt right to dedicate their portfolio project to create TruthQuest to bring glory and recognition to God, Who the developers depended on throughout this very hard and intense course for motivation and the will to continue, as well as to show appreciation for the opportunity of ALX SE that was given to them.
+            </p>
+        </div>
+        <div id ="devop">
+            <h4>Authors and Developers</h4>
+            
+                <p>Nikki Lewis: <a href="https://github.com/Grey-What">Github</a>  <a href="www.linkedin.com/in/nikki-lewis-0x7d2">LinkedIn</a></p>
+                <p>Vishaylin Parshotam: <a href="https://github.com/Vishaylinp">Github</a>  <a href="www.linkedin.com/in/vishaylin-parshotam-46a859277">LinkedIn</a></p>
+
+                <p>Source code of TruthQuest: <a href="https://github.com/Grey-What/TruthQuest">Github</a></p>
+        </div>
+        <a href="{{ url_for('main') }}">Continue to TruthQuest</a>
+</body>
+</html>
