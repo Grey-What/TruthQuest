@@ -6,6 +6,7 @@
     <title>TruthQuest - {% block title %}{% endblock title %}</title>
     {% endblock head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='css/Image/logo3.jpeg') }}">
 
 </head>
     <body>
@@ -36,6 +37,6 @@
 
     {% block user_info %}{% endblock user_info %}
     {% block content %}{% endblock content %}
-    <footer>Truth</footer>
+    <footer>Truth Quest</footer>
 </body>
 </html>
