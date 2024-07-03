@@ -8,12 +8,14 @@ body {
 .container {
    display: flex;
    justify-content: space-between;
-   padding-left: 420px;
-  
+   padding-left: 80px;
+   margin-right: 60px;
    align-items: flex-start;
+   gap: 25px;
 }
 *, *:before, *:after {
     box-sizing: inherit;
+}
 #quiz {
     flex-basis: 50%;
     padding: 20px;
@@ -32,8 +34,8 @@ body {
     padding: 20px;
     border-radius: 5px;
     background-color: #209EFF;
-    margin-left: 20px;
-    margin-right: auto;
+    margin-left: 10px;
+    margin-right: 30px;
     padding-bottom: 50px;
 }
 header {
@@ -82,7 +84,7 @@ footer {
 header:hover {
     color: goldenrod; 
 }
-}
+
 footer:hover {
     color: goldenrod; 
 }
@@ -264,3 +266,24 @@ button[name="answer"][value="False"] {
     bottom: 0;
     right: 0;
 }
+
+.user-info {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    width: 220px;
+    max-width: 600px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Additional CSS to position the button correctly in the form */
+form .btn-login,
+form .btn-signup {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    position: static;
