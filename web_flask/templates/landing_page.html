@@ -15,8 +15,9 @@
                 <a href="{{ url_for('main') }}">Continue to TruthQuest</a>
             </nav>
         </header>
-        <h1>Welcome to TruthQuest</h1>
-        <h3>The Truth, The Way and The Light</h3>
+
+        <h1 class="landing-page-heading">Welcome to Our Website</h1>
+        <h3 class="custom-header">The Truth, The Way, and The Light</h3>
         <img src="{{ url_for('static', filename='css/Image/cover.jpeg') }}" alt="cover" class="cover">
 
         <div id="Introduction">
@@ -76,6 +77,8 @@
 
                 <p>Source code of TruthQuest: <a href="https://github.com/Grey-What/TruthQuest">Github</a></p>
         </div>
-        <a href="{{ url_for('main') }}">Continue to TruthQuest</a>
+        <form action="{{ url_for('main') }}">
+            <button type="submit">Continue to TruthQuest</button>
+        </form>
 </body>
 </html>

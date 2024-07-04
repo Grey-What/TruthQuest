@@ -94,6 +94,7 @@ header .logo {
     margin-right: 0px;
 }
 
+
 button {
     font-family: Arial, sans-serif;
     font-size: 16px;
@@ -105,9 +106,8 @@ button {
     margin: 10px;
     background-color: #007bff;
     color: white;
-
-
 }
+
  button:hover {
     background-color: #0056b3;
 }
@@ -120,6 +120,32 @@ button {
     justify-content: space-between;
     padding: 0 20px;
  }
+
+ .btn-outline-info {
+    background-color: blue;
+    color: white;
+    border-color: lightblue;
+}
+
+.btn-outline-info:hover {
+    background-color: black;
+    color:white;
+    border-color: lightblue;
+}
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    position:relative;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
 
  .content-section {
     background-color: white;
@@ -147,18 +173,6 @@ button {
 
 .form-check-label {
     color: #333;
-}
-
-.btn-outline-info {
-    background-color: blue;
-    color: white;
-    border-color: lightblue;
-}
-
-.btn-outline-info:hover {
-    background-color: black;
-    color:white;
-    border-color: lightblue;
 }
 
 .border-bottom {
@@ -239,22 +253,6 @@ header .topnav a.active {
     margin-top: auto;
 }
 
-input[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-}
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
 button[name="answer"][value="True"] {
     position: absolute;
     bottom: 0;
@@ -278,12 +276,59 @@ button[name="answer"][value="False"] {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-
-/* Additional CSS to position the button correctly in the form */
-form .btn-login,
-form .btn-signup {
-    display: block;
-    width: 100%;
+.landing-page-heading {
+    font-size: 30px;
+    color: #007bff;
     text-align: center;
-    margin-top: 20px;
-    position: static;
+    text-decoration: underline;
+}
+
+.custom-header {
+    color: #054c98; 
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px; 
+    font-weight: bold;
+    text-decoration-line: underline;
+}
+
+.cover {
+    width: 1344px;
+    height: 300px;
+}
+
+#Introduction {
+    background-color: lightblue; 
+    padding: 20px;
+    border: 2px solid #007bff;
+}
+
+#Introduction .features p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+#About {
+    background-color: lightblue; 
+    padding: 20px; 
+    border: 2px solid #007bff; 
+    border-radius: 5px; 
+    margin-bottom: 20px; 
+}
+
+#About h2 {
+    color: black;
+    text-align: center; 
+    margin-bottom: 15px; 
+}
+
+#About p {
+    font-size: 16px; 
+    line-height: 1.6; 
+    text-align: justify; 
+}
+#Introduction h2,
+#Introduction h3,
+#Introduction h4 {
+    text-decoration: underline;
+}
