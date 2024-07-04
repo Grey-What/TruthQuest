@@ -28,6 +28,7 @@ class Quiz(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.String(256), nullable=False)
     answer = db.Column(db.Boolean, nullable=False)
+    reason = db.Column(db.String(256), nullable=True)
     date_added = db.Column(db.Date, nullable=False, default=db.func.current_date())
 
     def __repr__(self):

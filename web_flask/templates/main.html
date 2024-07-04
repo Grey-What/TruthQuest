@@ -29,6 +29,9 @@
                             <p><strong>Correct!</strong></p>
                         {% else %}
                             <p><strong>Incorrect.</strong> The correct answer is: {{ 'True' if quiz.answer else 'False' }}</p>
+                            {% if quiz.reason %}
+                                <p>{{ quiz.reason }}</p>
+                            {% endif %}
                         {% endif %}
                         <form action="{{ url_for('next_quiz') }}" method="POST">
                             <input type="submit" name="next_quiz" value="Next Quiz">
