@@ -23,11 +23,12 @@ def fetch_and_store_daily_quizzes():
     global daily_quizzes
     daily_quizzes = get_daily_quizzes()
 
-@app.route("/")
+@app.route("/TruthQuest", strict_slashes=False)
+@app.route("/", strict_slashes=False)
 def landing_page():
     return render_template("landing_page.html")
 
-@app.route('/main', methods=['GET', 'POST'])
+@app.route('/main', methods=['GET', 'POST'], strict_slashes=False)
 def main():
     global daily_quizzes
     user_stats = get_or_create_user_stats()
@@ -65,7 +66,7 @@ def main():
                            quiz_complete=quiz_complete,
                            user_stats=user_stats)
 
-@app.route('/next_quiz', methods=['POST'])
+@app.route('/next_quiz', methods=['POST'], strict_slashes=False)
 def next_quiz():
     user_answer = request.form.get('answer')
 
@@ -102,11 +103,11 @@ def next_quiz():
     
     return redirect(url_for('main'))
 
-@app.route("/about")
+@app.route("/about", strict_slashes=False)
 def about():
     return render_template("about.html")
 
-@app.route('/register', methods=('GET', 'POST'))
+@app.route('/register', methods=('GET', 'POST'), strict_slashes=False)
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('main'))
@@ -120,7 +121,7 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', tile='Register', form=form)
 
-@app.route('/login', methods=('GET', 'POST'))
+@app.route('/login', methods=('GET', 'POST'), strict_slashes=False)
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('main'))
@@ -134,7 +135,7 @@ def login():
                 flash("Login unsuccessful. Please check email and password", 'danger')
     return render_template('login.html', tile='Login', form=form)
 
-@app.route('/logout')
+@app.route('/logout', strict_slashes=False)
 def logout():
     logout_user()
     return redirect(url_for('landing_page'))
