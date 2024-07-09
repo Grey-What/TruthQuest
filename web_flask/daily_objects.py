@@ -9,7 +9,6 @@ def get_daily_quizzes():
     with app.app_context():
         today = datetime.utcnow().date()
         quizzes = Quiz.query.filter(func.date(Quiz.date_added)==today).order_by(func.random()).limit(5).all()
-        print(quizzes)
     return quizzes
 
 def get_daily_verse():
@@ -27,7 +26,7 @@ def get_daily_verse():
 
         book = reference.split(' ')[0]
         chapter = int(reference.split(' ')[1].split(':')[0])
-        verse = int(reference.split(' ')[1].split(':')[1])
+        verse = reference.split(' ')[1].split(':')[1]
 
             #add to desired sturcture
         daily_verse["bookname"] = book
@@ -40,7 +39,6 @@ def get_daily_verse():
         db_verse = Verse(date=daily_verse["date"], book=daily_verse["bookname"], chapter=daily_verse["chapter"], verse=daily_verse["verse"], text=daily_verse["text"])
         db.session.add(db_verse)
         db.session.commit()
-        print("test daily verse:\n {}".format(daily_verse))
 
     return daily_verse
 

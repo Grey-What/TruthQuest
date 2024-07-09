@@ -43,7 +43,7 @@ class Verse(db.Model, UserMixin):
     date = db.Column(db.String(64), nullable=False)
     book = db.Column(db.String(64), nullable=False)
     chapter = db.Column(db.Integer, nullable=False)
-    verse = db.Column(db.Integer, nullable=False)
+    verse = db.Column(db.String(64), nullable=False)
     text = db.Column(db.Text, nullable=False)
 
     def __repr__(self):
