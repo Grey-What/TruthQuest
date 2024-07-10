@@ -4,40 +4,40 @@ A web application that display's 5 daily interactive true or false question and 
 
 ### Features
 #### Daily Quizzes
-    We have an implemented an algortithm that will extract 5 quizzes on a 24 hour cycle, that will be displayed to each user
+We have an implemented an algortithm that will extract 5 quizzes on a 24 hour cycle, that will be displayed to each user
 
 #### Daily Verse
-    By making use of a 3rd party API we have the ability to display a bible verse each day to motivate, enchourage and inspire users
+By making use of a 3rd party API we have the ability to display a bible verse each day to motivate, enchourage and inspire users
 
 #### User Stats
-    With our user stats feature for registered users, a user can keep track of their streaks, ammount of quizzes completed as well as the ammount they have answered correctly
+With our user stats feature for registered users, a user can keep track of their streaks, ammount of quizzes completed as well as the ammount they have answered correctly
 
 ### Installation and Usage:
-    Simply search [thelewis.tech/](http://thelewis.tech) and select the buttom 'Continue to TruthQuest' to play
+Simply search [thelewis.tech/](http://thelewis.tech) and select the buttom 'Continue to TruthQuest' to play
 
 ### Contributing:
-    We currently do not allow any contribution besides those of added collaborators
+We currently do not allow any contribution besides those of added collaborators
 
 ### Licensing:
-    MIT License
+MIT License
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-    ![](image.png)
+![](image.png)
 ---
