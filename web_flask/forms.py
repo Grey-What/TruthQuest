@@ -1,3 +1,4 @@
+"""This module contains the classes and their relevant methods to handel user login and registration"""
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
@@ -29,7 +30,7 @@ class RegistrationFrom(FlaskForm):
             raise ValidationError('email already exists, login instead')
 
 class LoginForm(FlaskForm):
-    """class for registration form"""
+    """class for login form"""
     email = StringField('Email',
                             validators=[DataRequired(), Email()])
     password = PasswordField('Password',

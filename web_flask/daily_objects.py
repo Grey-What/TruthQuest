@@ -1,3 +1,8 @@
+"""
+This module contains the daily objects that need to be updated every 24 hours for the web app
+
+These Objects include a dictionary of 5 quizzes and a dictionary of a bible verse
+"""
 import requests
 from web_flask import db, app
 from web_flask.models import Verse, Quiz
@@ -5,14 +10,14 @@ from datetime import datetime
 from sqlalchemy.sql import func
 
 def get_daily_quizzes():
-    """get a daily quiz database"""
+    """get 5 random quizzes from database"""
     with app.app_context():
         today = datetime.utcnow().date()
         quizzes = Quiz.query.filter(func.date(Quiz.date_added)==today).order_by(func.random()).limit(5).all()
     return quizzes
 
 def get_daily_verse():
-    """get a daily verse from bible api and save to db"""
+    """get a daily verse from bible api and save to database"""
     daily_verse = {}
     url = "https://beta.ourmanna.com/api/v1/get?format=json&order=daily"
     headers = {"accept": "application/json"}

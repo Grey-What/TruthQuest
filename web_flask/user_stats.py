@@ -1,9 +1,11 @@
+"""Module contains all code relating to storing and updating of a user's stats like streaks and ammount of correct answers"""
 from flask_login import current_user
 from web_flask.models import UserStats, User
 from web_flask import db
 from datetime import datetime, timedelta
 
 def get_or_create_user_stats():
+    """creates or returns a user stats"""
     if current_user.is_authenticated:
         user_stats = UserStats.query.filter_by(user_id=current_user.id).first()
         if not user_stats:

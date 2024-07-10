@@ -1,3 +1,4 @@
+"""module contains routes of web application and servers as the main file for the web application"""
 from uuid import uuid4
 from datetime import datetime
 from web_flask.forms import RegistrationFrom, LoginForm
@@ -14,7 +15,7 @@ from web_flask.user_stats import get_or_create_user_stats, update_user_stats
 daily_verse = ""
 daily_quizzes = []
 
-#for scheduled job
+"""for scheduled job"""
 def fetch_and_store_daily_verse():
     global daily_verse
     daily_verse = get_daily_verse()
@@ -26,10 +27,12 @@ def fetch_and_store_daily_quizzes():
 @app.route("/TruthQuest", strict_slashes=False)
 @app.route("/", strict_slashes=False)
 def landing_page():
+    """return landing page"""
     return render_template("landing_page.html")
 
 @app.route('/main', methods=['GET', 'POST'], strict_slashes=False)
 def main():
+    """Return main page with quizzes, user stats and daily verse"""
     global daily_quizzes
     user_stats = get_or_create_user_stats()
     current_date = datetime.utcnow().date()
@@ -68,6 +71,7 @@ def main():
 
 @app.route('/next_quiz', methods=['POST'], strict_slashes=False)
 def next_quiz():
+    """This function is called when user submits a quiz answer and updates the daily quiz to the next"""
     user_answer = request.form.get('answer')
 
     if user_answer:
@@ -105,6 +109,7 @@ def next_quiz():
 
 @app.route("/about", strict_slashes=False)
 def about():
+    """return about page"""
     return render_template("about.html")
 
 @app.route('/register', methods=('GET', 'POST'), strict_slashes=False)
@@ -123,6 +128,7 @@ def register():
 
 @app.route('/login', methods=('GET', 'POST'), strict_slashes=False)
 def login():
+    """return login page for users"""
     if current_user.is_authenticated:
         return redirect(url_for('main'))
     form = LoginForm()
@@ -137,9 +143,11 @@ def login():
 
 @app.route('/logout', strict_slashes=False)
 def logout():
+    """retruns logout page for logged in users"""
     logout_user()
     return redirect(url_for('landing_page'))
 
+"""Schedulers to run to retrieve and update daily quizzes and verses"""
 scheduler = BackgroundScheduler()
 scheduler.add_job(func=fetch_and_store_daily_quizzes, trigger="interval", hours=24)
 scheduler.add_job(func=fetch_and_store_daily_verse, trigger="interval", hours=24)

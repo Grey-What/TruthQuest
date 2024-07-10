@@ -1,3 +1,4 @@
+"""Module contains models of TruthQuest objects"""
 from web_flask import db, login_manager
 from datetime import datetime
 from flask_login import UserMixin
@@ -32,7 +33,7 @@ class Quiz(db.Model, UserMixin):
     date_added = db.Column(db.Date, nullable=False, default=db.func.current_date())
 
     def __repr__(self):
-        """print string representation of a quiz"""
+        """return string representation of a quiz"""
         return "Quiz('{}', '{}', '{}', '{}')".format(self.id, self.date_added, self.question, self.answer)
 
 class Verse(db.Model, UserMixin):
@@ -47,7 +48,7 @@ class Verse(db.Model, UserMixin):
     text = db.Column(db.Text, nullable=False)
 
     def __repr__(self):
-        """print string representation of a verse"""
+        """Return string representation of a verse"""
         return "Verse('{}', '{}', '{}', '{}', '{}', '{}')".format(self.id, self.date, self.book, self.chapter, self.verse, self.text)
     
 class UserStats(db.Model):
@@ -64,6 +65,7 @@ class UserStats(db.Model):
     def __init__(self, user_id=None):
         """loads user stats"""
         self.user_id = user_id
+
     def __repr__(self):
-        """print string representation of a user stats"""
+        """Return string representation of a user stats"""
         print("{}, {}, {}, {}, {}".format(self.user_id, self.streak, self.quizzes_completed, self.correct_answers, self.last_played))
